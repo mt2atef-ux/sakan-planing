@@ -1,196 +1,339 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="مشروع روافد — المنظومة الوطنية للتكامل المؤسسي وسلاسل القيمة للجمعيات الأهلية في المملكة العربية السعودية">
   <title>روافد — المنظومة الوطنية للتكامل المؤسسي</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container navbar-container">
-      <a href="#" class="logo" onclick="showHome()">
-        <span>روافد</span>
-      </a>
-      <ul class="nav-menu">
-        <li><a href="#" class="nav-link active" onclick="showHome()">الرئيسية</a></li>
-        <li><a href="#" class="nav-link" onclick="loadPage('01-executive-summary.json')">الملخص التنفيذي</a></li>
-        <li><a href="#" class="nav-link" onclick="loadPage('04-project-components.json')">المكونات</a></li>
-        <li><a href="#" class="nav-link" onclick="loadPage('05-methodology-execution.json')">خارطة الطريق</a></li>
-      </ul>
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <div class="nav-logo" onclick="showHome()">
+      <div class="nav-logo-icon">ر</div>
+      <span class="nav-logo-text">روافد</span>
     </div>
-  </nav>
+    <ul class="nav-links" id="nav-links">
+      <li><button class="nav-link active" onclick="showHome()">الرئيسية</button></li>
+      <li><button class="nav-link" onclick="nav('01-executive-summary.json')">الملخص</button></li>
+      <li><button class="nav-link" onclick="nav('03-project-vision.json')">الرؤية</button></li>
+      <li><button class="nav-link" onclick="nav('04-project-components.json')">المكونات</button></li>
+      <li><button class="nav-link" onclick="nav('05-methodology-execution.json')">خارطة الطريق</button></li>
+      <li><button class="nav-link" onclick="nav('09-conclusion.json')">التوصيات</button></li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- Main Container -->
-  <main class="container">
-    <div id="page-content-wrapper">
-      <!-- Content will be dynamically rendered here -->
+<!-- ════ MAIN APP ════ -->
+<div id="app">
+  <div id="page-root" class="container"></div>
+</div>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">روافد</div>
+    <p class="footer-copy">© 2026 جمعية جود الإسكان — بالشراكة مع صندوق دعم الجمعيات</p>
+    <div class="footer-links">
+      <a class="footer-link" onclick="showHome()">الرئيسية</a>
+      <a class="footer-link" onclick="nav('09-conclusion.json')">التوصيات</a>
     </div>
-  </main>
+  </div>
+</footer>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-content">
-      <p>© 2026 مشروع روافد - جميع الحقوق محفوظة لجمعية سكن الأهلية</p>
-      <p>برعاية مركز دعم الجمعيات</p>
+<script>
+// ════════════════════════════════════════
+// Page meta — icon, color, description
+// ════════════════════════════════════════
+const pages = [
+  {
+    file: '01-executive-summary.json', title: 'الملخص التنفيذي',
+    icon: '📋', color: '#3b82f6',
+    desc: 'نظرة شاملة على أهداف المشروع، فرصه، ومنهجية التنفيذ.'
+  },
+  {
+    file: '02-strategic-context.json', title: 'السياق الاستراتيجي',
+    icon: '🌍', color: '#06b6d4',
+    desc: 'واقع القطاع الأهلي، التحديات، والمواءمة مع رؤية 2030.'
+  },
+  {
+    file: '03-project-vision.json', title: 'رؤية المشروع',
+    icon: '🔭', color: '#8b5cf6',
+    desc: 'الفرصة الوطنية، المقاربة الفلسفية، والمقارنة قبل وبعد.'
+  },
+  {
+    file: '04-project-components.json', title: 'مكونات المشروع',
+    icon: '⚙️', color: '#10b981',
+    desc: 'الأدلة المرجعية، إطار التكامل، وسلاسل القيمة التنموية.'
+  },
+  {
+    file: '05-methodology-execution.json', title: 'المنهجية والتنفيذ',
+    icon: '🗺️', color: '#f97316',
+    desc: 'منهجية ADPOT و ADOPT وخارطة الطريق الزمنية بمراحلها الخمس.'
+  },
+  {
+    file: '06-governance-risks.json', title: 'الحوكمة والمخاطر',
+    icon: '🛡️', color: '#ef4444',
+    desc: 'نموذج الحوكمة، مصفوفة RACI، وإدارة المخاطر الرئيسية.'
+  },
+  {
+    file: '07-digital-transformation.json', title: 'التحول الرقمي',
+    icon: '💡', color: '#eab308',
+    desc: 'البنية التقنية للمنصات الذكية ونظام قياس الأثر الوطني.'
+  },
+  {
+    file: '08-impact-sustainability.json', title: 'الأثر والاستدامة',
+    icon: '📈', color: '#22c55e',
+    desc: 'مؤشرات النجاح الرئيسية، القيمة المضافة، وآليات الاستدامة الذاتية.'
+  },
+  {
+    file: '09-conclusion.json', title: 'توصيات وختام',
+    icon: '🏁', color: '#a78bfa',
+    desc: 'التوصيات الأربع، الشراكات المطلوبة، والانطلاق التجريبي.'
+  }
+];
+
+let activePage = null;
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Active nav helper
+function setActiveNav(fileOrNull) {
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  if (!fileOrNull) {
+    document.querySelector('.nav-link[onclick="showHome()"]')?.classList.add('active');
+  } else {
+    document.querySelectorAll('.nav-link').forEach(b => {
+      if ((b.getAttribute('onclick') || '').includes(fileOrNull.replace('.json',''))) {
+        b.classList.add('active');
+      }
+    });
+  }
+}
+
+// Quick nav helper used by nav buttons
+function nav(file) { loadPage(file); }
+
+// ════ HOME PAGE ════
+function showHome() {
+  activePage = null;
+  setActiveNav(null);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const cardsHtml = pages.map(p => `
+    <div class="nav-card" onclick="loadPage('${p.file}')" style="--card-color:${p.color}">
+      <div class="nav-card-icon" style="background:${p.color}22; color:${p.color}; font-size:1.6rem;">
+        ${p.icon}
+      </div>
+      <div class="nav-card-title">${p.title}</div>
+      <div class="nav-card-desc">${p.desc}</div>
+      <div class="nav-card-arrow">←</div>
     </div>
-  </footer>
+  `).join('');
 
-  <script>
-    // List of all pages to populate the sidebar
-    const pageFiles = [
-      { file: '01-executive-summary.json', title: 'الملخص التنفيذي' },
-      { file: '02-strategic-context.json', title: 'السياق الاستراتيجي' },
-      { file: '03-project-vision.json', title: 'رؤية المشروع' },
-      { file: '04-project-components.json', title: 'مكونات المشروع' },
-      { file: '05-methodology-execution.json', title: 'المنهجية والتنفيذ' },
-      { file: '06-governance-risks.json', title: 'الحوكمة والمخاطر' },
-      { file: '07-digital-transformation.json', title: 'التحول الرقمي' },
-      { file: '08-impact-sustainability.json', title: 'الأثر والاستدامة' },
-      { file: '09-conclusion.json', title: 'توصيات وختام' }
-    ];
+  document.getElementById('page-root').innerHTML = `
+    <div class="home-wrap page-enter">
 
-    let currentPage = '';
-
-    function showHome() {
-      currentPage = '';
-      const wrapper = document.getElementById('page-content-wrapper');
-      
-      let cardsHtml = '';
-      pageFiles.forEach(p => {
-        cardsHtml += `
-          <div class="card" onclick="loadPage('${p.file}')" style="cursor: pointer;">
-            <h3>${p.title}</h3>
-            <p style="margin-top: 1rem; font-size: 0.95rem;">اضغط لاستعراض المحتويات والتفاصيل الهيكلية لهذا القسم.</p>
-          </div>
-        `;
-      });
-
-      wrapper.innerHTML = `
-        <div class="home-hero">
-          <div class="hero-badge">المنظومة الوطنية للتكامل المؤسسي</div>
-          <h1>مشروع روافد للجمعيات الأهلية</h1>
-          <p>إعادة هيكلة طريقة عمل القطاع الأهلي من الجذور وتأسيس سلاسل قيمة تنموية مستدامة.</p>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-badge">المنظومة الوطنية للتكامل المؤسسي</div>
+        <h1 class="hero-title">مشروع روافد<br>للجمعيات الأهلية 🇸🇦</h1>
+        <p class="hero-subtitle">
+          إعادة هيكلة طريقة عمل القطاع الأهلي من الجذور — تحويل الجمعيات من جُزُر منفصلة إلى شبكة متكاملة تُضاعف أثرها التنموي.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="loadPage('01-executive-summary.json')">ابدأ الاستكشاف ←</button>
+          <button class="btn btn-outline" onclick="loadPage('09-conclusion.json')">التوصيات والقرار</button>
         </div>
-        <div class="home-cards">
-          ${cardsHtml}
+      </section>
+
+      <!-- Stats -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-num" data-count="5000">0</span>
+          <span class="stat-label">جمعية أهلية مرخصة</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="25">0</span>
+          <span class="stat-label">% هدر بسبب التكرار</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="18">0</span>
+          <span class="stat-label">شهراً لاكتمال المنظومة</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="91">0</span>
+          <span class="stat-label">دليلاً مرجعياً مكيّفاً</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="13">0</span>
+          <span class="stat-label">منطقة مستهدفة</span>
+        </div>
+      </div>
+
+      <!-- Pages Grid -->
+      <div class="section-heading">
+        <span class="section-heading-label">أقسام المشروع</span>
+        <div class="section-heading-line"></div>
+      </div>
+      <div class="nav-cards">${cardsHtml}</div>
+
+    </div>
+  `;
+
+  // Animate counters
+  document.querySelectorAll('.stat-num[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count);
+    let current = 0;
+    const step = Math.ceil(target / 50);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = current.toLocaleString('ar');
+      if (current >= target) clearInterval(timer);
+    }, 30);
+  });
+}
+
+// ════ INNER PAGE RENDERER ════
+async function loadPage(jsonFile) {
+  activePage = jsonFile;
+  setActiveNav(jsonFile);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const pageMeta = pages.find(p => p.file === jsonFile) || {};
+  const root = document.getElementById('page-root');
+  root.innerHTML = `<div style="padding:5rem 0; text-align:center; color:var(--text-muted);">⏳ جارٍ التحميل...</div>`;
+
+  try {
+    const res = await fetch(`./pages-json/${jsonFile}`);
+    const data = await res.json();
+
+    // Build sidebar
+    const sidebarHtml = `
+      <aside class="sidebar">
+        <div class="sidebar-header">أقسام المشروع</div>
+        <ul class="sidebar-list">
+          ${pages.map((p,i) => `
+            <li>
+              <button class="sidebar-btn ${p.file === jsonFile ? 'active' : ''}" onclick="loadPage('${p.file}')">
+                <span class="sidebar-btn-num">${i+1}</span>
+                ${p.title}
+              </button>
+            </li>
+          `).join('')}
+        </ul>
+      </aside>
+    `;
+
+    // Build main content
+    let main = `
+      <div class="page-hero">
+        <div class="page-hero-badge">${pageMeta.icon || '📄'} ${pageMeta.title || ''}</div>
+        <h1>${data.title}</h1>
+        <p>${pageMeta.desc || ''}</p>
+      </div>
+    `;
+
+    // Infographic
+    if (data.infographic) {
+      main += `
+        <div class="infographic-block">
+          <img src="${data.infographic}" alt="إنفوجرافيك توضيحي">
         </div>
       `;
-
-      // Update Nav active states
-      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-      document.querySelector('.nav-link[onclick="showHome()"]').classList.add('active');
     }
 
-    async function loadPage(jsonFile) {
-      currentPage = jsonFile;
-      const wrapper = document.getElementById('page-content-wrapper');
-      
-      // Update main navigation active state
-      document.querySelectorAll('.nav-link').forEach(link => {
-        const onClickAttr = link.getAttribute('onclick') || '';
-        if (onClickAttr.includes(jsonFile)) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
+    // Sections
+    data.sections.forEach(section => {
+      main += `<div class="content-section">`;
 
-      // Build sidebar html
-      let sidebarHtml = '<ul class="sidebar-menu">';
-      pageFiles.forEach(p => {
-        const activeClass = p.file === jsonFile ? 'active' : '';
-        sidebarHtml += `<li><a href="#" class="sidebar-link ${activeClass}" onclick="loadPage('${p.file}')">${p.title}</a></li>`;
-      });
-      sidebarHtml += '</ul>';
+      if (section.title) {
+        main += `
+          <div class="section-label">
+            <div class="section-label-bar"></div>
+            <span>${section.title}</span>
+          </div>
+        `;
+      }
 
-      // Load Content
-      try {
-        const response = await fetch(`./pages-json/${jsonFile}`);
-        const data = await response.json();
+      section.elements.forEach(el => {
+        if (el.type === 'paragraph') {
+          main += `<p class="content-p">${el.text}</p>`;
 
-        let contentHtml = `<h1>${data.title}</h1>`;
+        } else if (el.type === 'list') {
+          main += `<ul class="smart-list">`;
+          el.items.forEach(item => {
+            main += `<li>${item}</li>`;
+          });
+          main += `</ul>`;
 
-        // Render Infographic if exists
-        if (data.infographic) {
-          contentHtml += `
-            <div class="content-element" style="margin-bottom: 2.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: rgba(0,0,0,0.2); padding: 1.5rem;">
-              <img src="${data.infographic}" alt="إنفوجرافيك توضيحي لـ ${data.title}" style="width: 100%; height: auto; display: block; border-radius: var(--radius-sm);">
+        } else if (el.type === 'key-value') {
+          main += `
+            <div class="kv-card">
+              <div class="kv-card-key">${el.key}:</div>
+              <div class="kv-card-val">${el.value}</div>
+            </div>
+          `;
+
+        } else if (el.type === 'blockquote') {
+          main += `
+            <div class="blockquote">
+              <p>${el.text}</p>
+            </div>
+          `;
+
+        } else if (el.type === 'table') {
+          main += `
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>${el.headers.map(h => `<th>${h}</th>`).join('')}</tr>
+                </thead>
+                <tbody>
+                  ${el.rows.map(row => `
+                    <tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>
+                  `).join('')}
+                </tbody>
+              </table>
             </div>
           `;
         }
+      });
 
-        data.sections.forEach(section => {
-          if (section.title) {
-            contentHtml += `<h2 class="section-title">${section.title}</h2>`;
-          }
+      main += `</div>`; // .content-section
+    });
 
-          section.elements.forEach(el => {
-            if (el.type === 'paragraph') {
-              contentHtml += `<p class="content-element">${el.text}</p>`;
-            } else if (el.type === 'list') {
-              contentHtml += `<ul class="smart-list content-element">`;
-              el.items.forEach(item => {
-                contentHtml += `<li>${item}</li>`;
-              });
-              contentHtml += `</ul>`;
-            } else if (el.type === 'key-value') {
-              contentHtml += `
-                <div class="key-value-box content-element">
-                  <strong>${el.key}:</strong>
-                  <span>${el.value}</span>
-                </div>
-              `;
-            } else if (el.type === 'blockquote') {
-              contentHtml += `
-                <div class="blockquote-box content-element">
-                  <p>${el.text}</p>
-                </div>
-              `;
-            } else if (el.type === 'table') {
-              contentHtml += `
-                <div class="table-wrapper content-element">
-                  <table>
-                    <thead>
-                      <tr>
-                        ${el.headers.map(h => `<th>${h}</th>`).join('')}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${el.rows.map(row => `
-                        <tr>
-                          ${row.map(cell => `<td>${cell}</td>`).join('')}
-                        </tr>
-                      `).join('')}
-                    </tbody>
-                  </table>
-                </div>
-              `;
-            }
-          });
-        });
+    // Prev / Next navigation
+    const idx = pages.findIndex(p => p.file === jsonFile);
+    const prev = pages[idx - 1];
+    const next = pages[idx + 1];
+    main += `
+      <div style="display:flex; justify-content:space-between; gap:1rem; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border); flex-wrap:wrap;">
+        ${prev ? `<button class="btn btn-outline" onclick="loadPage('${prev.file}')">→ ${prev.title}</button>` : '<div></div>'}
+        ${next ? `<button class="btn btn-primary" onclick="loadPage('${next.file}')">← ${next.title}</button>` : '<div></div>'}
+      </div>
+    `;
 
-        wrapper.innerHTML = `
-          <div class="app-layout">
-            <aside class="sidebar">
-              ${sidebarHtml}
-            </aside>
-            <article class="main-content">
-              ${contentHtml}
-            </article>
-          </div>
-        `;
+    root.innerHTML = `
+      <div class="page-layout page-enter">
+        ${sidebarHtml}
+        <main>${main}</main>
+      </div>
+    `;
 
-      } catch (err) {
-        console.error(err);
-        wrapper.innerHTML = `<div class="main-content"><h2>خطأ في تحميل الصفحة</h2><p>تعذر جلب البيانات الخاصة بالصفحة المطلوبة.</p></div>`;
-      }
-    }
+  } catch (e) {
+    root.innerHTML = `<div class="page-hero" style="text-align:center;"><h1>⚠️ خطأ في التحميل</h1><p>تعذر جلب بيانات الصفحة. يرجى التأكد من تشغيل الموقع عبر خادم محلي.</p></div>`;
+  }
+}
 
-    // Load home page initially
-    showHome();
-  </script>
+// ════ INIT ════
+showHome();
+</script>
 </body>
 </html>

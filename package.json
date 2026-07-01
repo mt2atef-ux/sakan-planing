@@ -1,10 +1,10 @@
-{
+﻿{
   "name": "rawafid",
   "version": "0.1.0",
   "description": "المنظومة الوطنية للتكامل المؤسسي وسلاسل القيمة للجمعيات الأهلية",
   "private": true,
   "author": {
-    "name": "جمعية سكن",
+    "name": "جمعية جود الإسكان",
     "email": "info@rawafid.sa",
     "url": "https://rawafid.sa"
   },
