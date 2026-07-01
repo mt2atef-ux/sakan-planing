@@ -5,118 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>روافد — المنظومة الوطنية للتكامل المؤسسي</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Content Page Specific Layout */
-    .app-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 2rem;
-      margin-top: 100px;
-    }
-    
-    .sidebar {
-      position: sticky;
-      top: 100px;
-      height: calc(100vh - 140px);
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      overflow-y: auto;
-      backdrop-filter: var(--glass-blur);
-    }
-    
-    .sidebar-menu {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    
-    .sidebar-link {
-      display: block;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-sm);
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    
-    .sidebar-link:hover, .sidebar-link.active {
-      color: #fff;
-      background: var(--primary-light);
-      border-right: 3px solid var(--primary);
-    }
-
-    .main-content {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 3rem;
-      min-height: 600px;
-      backdrop-filter: var(--glass-blur);
-    }
-
-    .content-element {
-      margin-bottom: 2rem;
-    }
-
-    .section-title {
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.5rem;
-      margin-top: 2rem;
-      margin-bottom: 1.5rem;
-      color: #fff;
-    }
-
-    .key-value-box {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-color);
-      padding: 1rem 1.5rem;
-      border-radius: var(--radius-sm);
-      margin-bottom: 1rem;
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .key-value-box strong {
-      color: var(--primary);
-    }
-
-    .blockquote-box {
-      border-right: 4px solid var(--primary);
-      padding: 1rem 1.5rem;
-      background: rgba(var(--primary-rgb), 0.05);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin: 1.5rem 0;
-      font-style: italic;
-    }
-
-    /* Landing/Home styles when no specific section is active */
-    .home-hero {
-      text-align: center;
-      padding: 4rem 1rem;
-    }
-
-    .home-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    @media (max-width: 992px) {
-      .app-layout {
-        grid-template-columns: 1fr;
-      }
-      .sidebar {
-        position: relative;
-        top: 0;
-        height: auto;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -224,6 +112,15 @@
         const data = await response.json();
 
         let contentHtml = `<h1>${data.title}</h1>`;
+
+        // Render Infographic if exists
+        if (data.infographic) {
+          contentHtml += `
+            <div class="content-element" style="margin-bottom: 2.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: rgba(0,0,0,0.2); padding: 1.5rem;">
+              <img src="${data.infographic}" alt="إنفوجرافيك توضيحي لـ ${data.title}" style="width: 100%; height: auto; display: block; border-radius: var(--radius-sm);">
+            </div>
+          `;
+        }
 
         data.sections.forEach(section => {
           if (section.title) {

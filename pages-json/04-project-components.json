@@ -235,5 +235,6 @@
         }
       ]
     }
-  ]
+  ],
+  "infographic": "./images/04-project-components.svg"
 }

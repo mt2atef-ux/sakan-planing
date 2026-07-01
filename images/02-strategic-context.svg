@@ -1,0 +1,20 @@
+<svg viewBox="0 0 800 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#121824" rx="15" />
+  <text x="400" y="50" font-family="'Tajawal', sans-serif" font-size="24" fill="#ffffff" font-weight="bold" text-anchor="middle">تحديات الواقع وأهداف التغيير</text>
+  
+  <g transform="translate(100, 120)">
+    <rect width="250" height="200" fill="#ef4444" rx="10" opacity="0.1" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="125" y="40" font-family="'Tajawal', sans-serif" font-size="18" fill="#ef4444" font-weight="bold" text-anchor="middle">التحديات الراهنة</text>
+    <text x="125" y="90" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">عزلة تامة بين الجمعيات</text>
+    <text x="125" y="120" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">25% هدر نتيجة التكرار</text>
+    <text x="125" y="150" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">ضياع المعرفة برحيل الأفراد</text>
+  </g>
+  
+  <g transform="translate(450, 120)">
+    <rect width="250" height="200" fill="#10b981" rx="10" opacity="0.1" stroke="#10b981" stroke-width="1.5"/>
+    <text x="125" y="40" font-family="'Tajawal', sans-serif" font-size="18" fill="#10b981" font-weight="bold" text-anchor="middle">المستهدفات بالمنظومة</text>
+    <text x="125" y="90" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">تكامل قطاعي منسق</text>
+    <text x="125" y="120" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">تعظيم كفاءة الموارد</text>
+    <text x="125" y="150" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">مأسسة المعرفة بالكامل</text>
+  </g>
+</svg>

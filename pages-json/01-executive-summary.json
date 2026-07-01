@@ -205,5 +205,6 @@
         }
       ]
     }
-  ]
+  ],
+  "infographic": "./images/01-executive-summary.svg"
 }
