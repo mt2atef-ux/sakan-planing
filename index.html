@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>روافد — المنظومة الوطنية للتكامل المؤسسي</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Content Page Specific Layout */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      margin-top: 100px;
+    }
+    
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      height: calc(100vh - 140px);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      overflow-y: auto;
+      backdrop-filter: var(--glass-blur);
+    }
+    
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .sidebar-link {
+      display: block;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .sidebar-link:hover, .sidebar-link.active {
+      color: #fff;
+      background: var(--primary-light);
+      border-right: 3px solid var(--primary);
+    }
+
+    .main-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 3rem;
+      min-height: 600px;
+      backdrop-filter: var(--glass-blur);
+    }
+
+    .content-element {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .key-value-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .key-value-box strong {
+      color: var(--primary);
+    }
+
+    .blockquote-box {
+      border-right: 4px solid var(--primary);
+      padding: 1rem 1.5rem;
+      background: rgba(var(--primary-rgb), 0.05);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    /* Landing/Home styles when no specific section is active */
+    .home-hero {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    .home-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 992px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: relative;
+        top: 0;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="logo" onclick="showHome()">
+        <span>روافد</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#" class="nav-link active" onclick="showHome()">الرئيسية</a></li>
+        <li><a href="#" class="nav-link" onclick="loadPage('01-executive-summary.json')">الملخص التنفيذي</a></li>
+        <li><a href="#" class="nav-link" onclick="loadPage('04-project-components.json')">المكونات</a></li>
+        <li><a href="#" class="nav-link" onclick="loadPage('05-methodology-execution.json')">خارطة الطريق</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="container">
+    <div id="page-content-wrapper">
+      <!-- Content will be dynamically rendered here -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <p>© 2026 مشروع روافد - جميع الحقوق محفوظة لجمعية سكن الأهلية</p>
+      <p>برعاية مركز دعم الجمعيات</p>
+    </div>
+  </footer>
+
+  <script>
+    // List of all pages to populate the sidebar
+    const pageFiles = [
+      { file: '01-executive-summary.json', title: 'الملخص التنفيذي' },
+      { file: '02-strategic-context.json', title: 'السياق الاستراتيجي' },
+      { file: '03-project-vision.json', title: 'رؤية المشروع' },
+      { file: '04-project-components.json', title: 'مكونات المشروع' },
+      { file: '05-methodology-execution.json', title: 'المنهجية والتنفيذ' },
+      { file: '06-governance-risks.json', title: 'الحوكمة والمخاطر' },
+      { file: '07-digital-transformation.json', title: 'التحول الرقمي' },
+      { file: '08-impact-sustainability.json', title: 'الأثر والاستدامة' },
+      { file: '09-conclusion.json', title: 'توصيات وختام' }
+    ];
+
+    let currentPage = '';
+
+    function showHome() {
+      currentPage = '';
+      const wrapper = document.getElementById('page-content-wrapper');
+      
+      let cardsHtml = '';
+      pageFiles.forEach(p => {
+        cardsHtml += `
+          <div class="card" onclick="loadPage('${p.file}')" style="cursor: pointer;">
+            <h3>${p.title}</h3>
+            <p style="margin-top: 1rem; font-size: 0.95rem;">اضغط لاستعراض المحتويات والتفاصيل الهيكلية لهذا القسم.</p>
+          </div>
+        `;
+      });
+
+      wrapper.innerHTML = `
+        <div class="home-hero">
+          <div class="hero-badge">المنظومة الوطنية للتكامل المؤسسي</div>
+          <h1>مشروع روافد للجمعيات الأهلية</h1>
+          <p>إعادة هيكلة طريقة عمل القطاع الأهلي من الجذور وتأسيس سلاسل قيمة تنموية مستدامة.</p>
+        </div>
+        <div class="home-cards">
+          ${cardsHtml}
+        </div>
+      `;
+
+      // Update Nav active states
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      document.querySelector('.nav-link[onclick="showHome()"]').classList.add('active');
+    }
+
+    async function loadPage(jsonFile) {
+      currentPage = jsonFile;
+      const wrapper = document.getElementById('page-content-wrapper');
+      
+      // Update main navigation active state
+      document.querySelectorAll('.nav-link').forEach(link => {
+        const onClickAttr = link.getAttribute('onclick') || '';
+        if (onClickAttr.includes(jsonFile)) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      // Build sidebar html
+      let sidebarHtml = '<ul class="sidebar-menu">';
+      pageFiles.forEach(p => {
+        const activeClass = p.file === jsonFile ? 'active' : '';
+        sidebarHtml += `<li><a href="#" class="sidebar-link ${activeClass}" onclick="loadPage('${p.file}')">${p.title}</a></li>`;
+      });
+      sidebarHtml += '</ul>';
+
+      // Load Content
+      try {
+        const response = await fetch(`./pages-json/${jsonFile}`);
+        const data = await response.json();
+
+        let contentHtml = `<h1>${data.title}</h1>`;
+
+        data.sections.forEach(section => {
+          if (section.title) {
+            contentHtml += `<h2 class="section-title">${section.title}</h2>`;
+          }
+
+          section.elements.forEach(el => {
+            if (el.type === 'paragraph') {
+              contentHtml += `<p class="content-element">${el.text}</p>`;
+            } else if (el.type === 'list') {
+              contentHtml += `<ul class="smart-list content-element">`;
+              el.items.forEach(item => {
+                contentHtml += `<li>${item}</li>`;
+              });
+              contentHtml += `</ul>`;
+            } else if (el.type === 'key-value') {
+              contentHtml += `
+                <div class="key-value-box content-element">
+                  <strong>${el.key}:</strong>
+                  <span>${el.value}</span>
+                </div>
+              `;
+            } else if (el.type === 'blockquote') {
+              contentHtml += `
+                <div class="blockquote-box content-element">
+                  <p>${el.text}</p>
+                </div>
+              `;
+            } else if (el.type === 'table') {
+              contentHtml += `
+                <div class="table-wrapper content-element">
+                  <table>
+                    <thead>
+                      <tr>
+                        ${el.headers.map(h => `<th>${h}</th>`).join('')}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${el.rows.map(row => `
+                        <tr>
+                          ${row.map(cell => `<td>${cell}</td>`).join('')}
+                        </tr>
+                      `).join('')}
+                    </tbody>
+                  </table>
+                </div>
+              `;
+            }
+          });
+        });
+
+        wrapper.innerHTML = `
+          <div class="app-layout">
+            <aside class="sidebar">
+              ${sidebarHtml}
+            </aside>
+            <article class="main-content">
+              ${contentHtml}
+            </article>
+          </div>
+        `;
+
+      } catch (err) {
+        console.error(err);
+        wrapper.innerHTML = `<div class="main-content"><h2>خطأ في تحميل الصفحة</h2><p>تعذر جلب البيانات الخاصة بالصفحة المطلوبة.</p></div>`;
+      }
+    }
+
+    // Load home page initially
+    showHome();
+  </script>
+</body>
+</html>

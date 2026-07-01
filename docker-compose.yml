@@ -1,0 +1,121 @@
+version: '3.9'
+
+# ══════════════════════════════════════════
+# Docker Compose — روافد / Rawafid
+# Usage:
+#   Development:  docker compose up
+#   Production:   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+# ══════════════════════════════════════════
+
+services:
+
+  # ──────────────────────────────────────────
+  # Application Server
+  # ──────────────────────────────────────────
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    container_name: rawafid-app
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=${APP_ENV:-development}
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - REDIS_URL=redis://cache:6379
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    volumes:
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+    networks:
+      - rawafid-net
+
+  # ──────────────────────────────────────────
+  # PostgreSQL Database
+  # ──────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: rawafid-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-rawafid_db}
+      POSTGRES_USER: ${POSTGRES_USER:-rawafid_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rawafid_pass}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=ar_SA.UTF-8 --lc-ctype=ar_SA.UTF-8"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-rawafid_user} -d ${POSTGRES_DB:-rawafid_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - rawafid-net
+
+  # ──────────────────────────────────────────
+  # Redis Cache
+  # ──────────────────────────────────────────
+  cache:
+    image: redis:7-alpine
+    container_name: rawafid-cache
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - rawafid-net
+
+  # ──────────────────────────────────────────
+  # Nginx Reverse Proxy (optional, comment out for dev)
+  # ──────────────────────────────────────────
+  nginx:
+    image: nginx:alpine
+    container_name: rawafid-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+    networks:
+      - rawafid-net
+    profiles:
+      - production
+
+# ──────────────────────────────────────────
+# Volumes
+# ──────────────────────────────────────────
+volumes:
+  postgres_data:
+    name: rawafid_postgres_data
+  redis_data:
+    name: rawafid_redis_data
+
+# ──────────────────────────────────────────
+# Networks
+# ──────────────────────────────────────────
+networks:
+  rawafid-net:
+    name: rawafid_network
+    driver: bridge
