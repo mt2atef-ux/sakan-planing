@@ -1,31 +1,31 @@
-<svg viewBox="0 0 800 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-  <defs>
+﻿<svg viewBox="0 0 800 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>@import url(\x27https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900\x26display=swap\x27); text, tspan { font-family: \x27Tajawal\x27, sans-serif !important; }</style>
     <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1a73e2" />
-      <stop offset="100%" stop-color="#009688" />
+      <stop offset="0%" stop-color="#8a6240" />
+      <stop offset="100%" stop-color="#7fa47f" />
     </linearGradient>
   </defs>
-  <rect width="100%" height="100%" fill="#121824" rx="15" />
-  <text x="400" y="50" font-family="'Tajawal', sans-serif" font-size="24" fill="#ffffff" font-weight="bold" text-anchor="middle">أركان المنظومة الوطنية للتكامل المؤسسي</text>
+  <rect width="100%" height="100%" fill="#f7f5f0" rx="15" stroke="#e6e1d5" stroke-width="1"/>
+  <text x="400" y="50" font-family="\x27Tajawal\x27, sans-serif" font-size="24" fill="#2e2620" font-weight="bold" text-anchor="middle">أركان المنظومة الوطنية للتكامل المؤسسي</text>
   
   <g transform="translate(80, 120)">
-    <rect width="180" height="180" fill="url(#g1)" rx="10" opacity="0.15" stroke="#1a73e2" stroke-width="2"/>
-    <text x="90" y="50" font-family="'Tajawal', sans-serif" font-size="18" fill="#1a73e2" font-weight="bold" text-anchor="middle">الأدلة المرجعية</text>
-    <text x="90" y="90" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">تكييف مناطقي وقطاعي</text>
-    <text x="90" y="120" font-family="'Tajawal', sans-serif" font-size="12" fill="#9ca3af" text-anchor="middle">لتسهيل التطبيق الميداني</text>
+    <rect width="180" height="180" fill="url(#g1)" rx="10" opacity="0.15" stroke="#8a6240" stroke-width="2"/>
+    <text x="90" y="50" font-family="\x27Tajawal\x27, sans-serif" font-size="18" fill="#8a6240" font-weight="bold" text-anchor="middle">الأدلة المرجعية</text>
+    <text x="90" y="90" font-family="\x27Tajawal\x27, sans-serif" font-size="14" fill="#2e2620" text-anchor="middle">تكييف مناطقي وقطاعي</text>
+    <text x="90" y="120" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" text-anchor="middle">لتسهيل التطبيق الميداني</text>
   </g>
   
   <g transform="translate(310, 120)">
-    <rect width="180" height="180" fill="url(#g1)" rx="10" opacity="0.15" stroke="#009688" stroke-width="2"/>
-    <text x="90" y="50" font-family="'Tajawal', sans-serif" font-size="18" fill="#009688" font-weight="bold" text-anchor="middle">إطار التكامل</text>
-    <text x="90" y="90" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">توزيع الأدوار والتنسيق</text>
-    <text x="90" y="120" font-family="'Tajawal', sans-serif" font-size="12" fill="#9ca3af" text-anchor="middle">لتقليص الهدر والازدواجية</text>
+    <rect width="180" height="180" fill="url(#g1)" rx="10" opacity="0.15" stroke="#7fa47f" stroke-width="2"/>
+    <text x="90" y="50" font-family="\x27Tajawal\x27, sans-serif" font-size="18" fill="#7fa47f" font-weight="bold" text-anchor="middle">إطار التكامل</text>
+    <text x="90" y="90" font-family="\x27Tajawal\x27, sans-serif" font-size="14" fill="#2e2620" text-anchor="middle">توزيع الأدوار والتنسيق</text>
+    <text x="90" y="120" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" text-anchor="middle">لتقليص الهدر والازدواجية</text>
   </g>
   
   <g transform="translate(540, 120)">
-    <rect width="180" height="180" fill="url(#g1)" rx="10" opacity="0.15" stroke="#ff7043" stroke-width="2"/>
-    <text x="90" y="50" font-family="'Tajawal', sans-serif" font-size="18" fill="#ff7043" font-weight="bold" text-anchor="middle">سلاسل القيمة</text>
-    <text x="90" y="90" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">رحلة مستفيد متكاملة</text>
-    <text x="90" y="120" font-family="'Tajawal', sans-serif" font-size="12" fill="#9ca3af" text-anchor="middle">من الفرز إلى التمكين</text>
+    <rect width="180" height="180" fill="url(#g1)" rx="10" opacity="0.15" stroke="#d2a679" stroke-width="2"/>
+    <text x="90" y="50" font-family="\x27Tajawal\x27, sans-serif" font-size="18" fill="#d2a679" font-weight="bold" text-anchor="middle">سلاسل القيمة</text>
+    <text x="90" y="90" font-family="\x27Tajawal\x27, sans-serif" font-size="14" fill="#2e2620" text-anchor="middle">رحلة مستفيد متكاملة</text>
+    <text x="90" y="120" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" text-anchor="middle">من الفرز إلى التمكين</text>
   </g>
 </svg>

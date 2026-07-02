@@ -1,15 +1,15 @@
-<svg viewBox="0 0 800 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#121824" rx="15" />
-  <text x="400" y="50" font-family="'Tajawal', sans-serif" font-size="24" fill="#ffffff" font-weight="bold" text-anchor="middle">المقارنة الاستراتيجية (قبل وبعد المنظومة)</text>
-  <line x1="400" y1="90" x2="400" y2="350" stroke="#374151" stroke-width="2" />
+﻿<svg viewBox="0 0 800 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f7f5f0" rx="15" stroke="#e6e1d5" stroke-width="1"/>
+  <text x="400" y="50" font-family="\x27Tajawal\x27, sans-serif" font-size="24" fill="#2e2620" font-weight="bold" text-anchor="middle">المقارنة الاستراتيجية (قبل وبعد المنظومة)</text>
+  <line x1="400" y1="90" x2="400" y2="350" stroke="#e6e1d5" stroke-width="2" />
   
-  <text x="200" y="110" font-family="'Tajawal', sans-serif" font-size="20" fill="#f43f5e" font-weight="bold" text-anchor="middle">قبل المنظومة</text>
-  <text x="200" y="170" font-family="'Tajawal', sans-serif" font-size="16" fill="#9ca3af" text-anchor="middle">أدلة مركزية غير مكيّفة</text>
-  <text x="200" y="220" font-family="'Tajawal', sans-serif" font-size="16" fill="#9ca3af" text-anchor="middle">المعرفة مرتبطة بالأشخاص</text>
-  <text x="200" y="270" font-family="'Tajawal', sans-serif" font-size="16" fill="#9ca3af" text-anchor="middle">خدمات مجزأة ومرهقة للمستفيد</text>
+  <text x="200" y="110" font-family="\x27Tajawal\x27, sans-serif" font-size="20" fill="#d32f2f" font-weight="bold" text-anchor="middle">قبل المنظومة</text>
+  <text x="200" y="170" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#6e655f" text-anchor="middle">أدلة مركزية غير مكيّفة</text>
+  <text x="200" y="220" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#6e655f" text-anchor="middle">المعرفة مرتبطة بالأشخاص</text>
+  <text x="200" y="270" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#6e655f" text-anchor="middle">خدمات مجزأة ومرهقة للمستفيد</text>
 
-  <text x="600" y="110" font-family="'Tajawal', sans-serif" font-size="20" fill="#10b981" font-weight="bold" text-anchor="middle">بعد المنظومة</text>
-  <text x="600" y="170" font-family="'Tajawal', sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">أدلة محلية مخصصة وعملية</text>
-  <text x="600" y="220" font-family="'Tajawal', sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">المعرفة موثقة في أنظمة</text>
-  <text x="600" y="270" font-family="'Tajawal', sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">رحلة مستفيد موحدة وسهلة</text>
+  <text x="600" y="110" font-family="\x27Tajawal\x27, sans-serif" font-size="20" fill="#689f38" font-weight="bold" text-anchor="middle">بعد المنظومة</text>
+  <text x="600" y="170" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#2e2620" text-anchor="middle">أدلة محلية مخصصة وعملية</text>
+  <text x="600" y="220" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#2e2620" text-anchor="middle">المعرفة موثقة في أنظمة</text>
+  <text x="600" y="270" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#2e2620" text-anchor="middle">رحلة مستفيد موحدة وسهلة</text>
 </svg>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -140,16 +140,70 @@ function showHome() {
   document.getElementById('page-root').innerHTML = `
     <div class="home-wrap page-enter">
 
-      <!-- Hero -->
-      <section class="hero">
-        <div class="hero-badge">المنظومة الوطنية للتكامل المؤسسي</div>
-        <h1 class="hero-title">مشروع روافد<br>للجمعيات الأهلية 🇸🇦</h1>
-        <p class="hero-subtitle">
-          إعادة هيكلة طريقة عمل القطاع الأهلي من الجذور — تحويل الجمعيات من جُزُر منفصلة إلى شبكة متكاملة تُضاعف أثرها التنموي.
-        </p>
-        <div class="hero-actions">
-          <button class="btn btn-primary" onclick="loadPage('01-executive-summary.json')">ابدأ الاستكشاف ←</button>
-          <button class="btn btn-outline" onclick="loadPage('09-conclusion.json')">التوصيات والقرار</button>
+      <!-- Organic Styled Hero Section matching Reference design -->
+      <section class="hero-organic">
+        <div class="hero-organic-bg" style="background-image: linear-gradient(rgba(46, 38, 32, 0.4), rgba(46, 38, 32, 0.7)), url('./images/hero-seedling.jpg');"></div>
+        <div class="hero-organic-content">
+          <div class="hero-badge-organic">✦ رسالة المنظومة الوطنية للتكامل المؤسسي</div>
+          <h1 class="hero-title-organic">نساعد في نمو وتمكين العمل التنموي المستدام بالمملكة</h1>
+          <p class="hero-subtitle-organic">
+            مشروع روافد — نعيد هيكلة طريقة عمل القطاع الأهلي من الجذور عبر تحويل الجمعيات من جزر منفصلة إلى شبكة متكاملة تضاعف أثرها التنموي بالشراكة بين جمعية جود الإسكان وصندوق دعم الجمعيات.
+          </p>
+          <div class="hero-actions-organic">
+            <button class="btn btn-primary" onclick="loadPage('01-executive-summary.json')">ابدأ استكشاف المنظومة ←</button>
+            <button class="btn btn-outline" onclick="loadPage('09-conclusion.json')">توصيات المبادرة والقرار</button>
+          </div>
+        </div>
+        <div class="hero-wave">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,32L120,42.7C240,53,480,75,720,74.7C960,75,1200,53,1320,42.7L1440,32L1440,120L1320,120C1200,120,960,120,720,120C480,120,240,120,120,120L0,120Z" fill="var(--bg-main)"></path>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Side-by-Side Highlight Section (Strengthen Local Systems) -->
+      <section class="highlight-section">
+        <div class="highlight-grid">
+          <div class="highlight-text-col">
+            <span class="highlight-badge">ماذا نفعل</span>
+            <h2 class="highlight-heading">تمكين وتكامل الجمعيات الأهلية</h2>
+            <p class="highlight-desc">
+              نعمل على توفير الموارد، الأدوات، والخبرات الفنية اللازمة لبناء وتوحيد معايير الأداء بين الجمعيات وتيسير سلاسل القيمة المتبادلة لضمان تقديم الخدمات بمرونة تامة.
+            </p>
+            <div class="highlight-mini-card">
+              <div class="highlight-mini-icon">🌱</div>
+              <div class="highlight-mini-body">
+                <h4>دعم الجمعيات الأهلية</h4>
+                <p>تسهيل التنسيق وتوفير أدلة تشغيل مناطقية مخصصة تناسب واقع كل بيئة محلية.</p>
+              </div>
+            </div>
+          </div>
+          <div class="highlight-img-col">
+            <img src="./images/community-work.jpg" alt="العمل التنموي المجتمعي" class="highlight-main-img">
+            <div class="floating-highlight-badge">
+              <span class="floating-badge-icon">🤝</span>
+              <div>
+                <h5>التعاون التكاملي</h5>
+                <p>تقليص الهدر بنسبة ٢٥٪</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Second Highlight Section (Education & Transfer of Knowledge) -->
+      <section class="highlight-section" style="margin-top: 4rem;">
+        <div class="highlight-grid highlight-grid-reverse">
+          <div class="highlight-text-col">
+            <span class="highlight-badge">التعليم وبناء القدرات</span>
+            <h2 class="highlight-heading">مأسسة ونقل المعرفة المستدامة</h2>
+            <p class="highlight-desc">
+              نهتم من خلال منهجية ADOPT ببناء قدرات الصف الثاني والقيادات الشابة لضمان بقاء المعرفة داخل الهيكل التنظيمي للجمعيات بدلاً من ارتباطها بالأفراد.
+            </p>
+          </div>
+          <div class="highlight-img-col">
+            <img src="./images/knowledge-transfer-infographic.svg" alt="إنفوجرافيك منهجية ADOPT لنقل المعرفة" class="highlight-main-img" style="object-fit: contain; padding: 1rem; background: var(--bg-surface);">
+          </div>
         </div>
       </section>
 
@@ -179,7 +233,7 @@ function showHome() {
 
       <!-- Pages Grid -->
       <div class="section-heading">
-        <span class="section-heading-label">أقسام المشروع</span>
+        <span class="section-heading-label">أقسام المشروع التفصيلية</span>
         <div class="section-heading-line"></div>
       </div>
       <div class="nav-cards">${cardsHtml}</div>
@@ -267,11 +321,39 @@ async function loadPage(jsonFile) {
           main += `<p class="content-p">${el.text}</p>`;
 
         } else if (el.type === 'list') {
-          main += `<ul class="smart-list">`;
-          el.items.forEach(item => {
-            main += `<li>${item}</li>`;
-          });
-          main += `</ul>`;
+          // Detect if the list items look like a timeline (containing periods like "الشهر" or stages)
+          const isTimeline = el.items.some(item => /^(الشهر|المرحلة|الخطوة|الأولى|الثانية|الثالثة|الرابعة|الخامسة)/i.test(item.trim()) || item.includes('–') || item.includes(':'));
+          
+          if (isTimeline) {
+            main += `<div class="timeline-wrap">`;
+            el.items.forEach(item => {
+              // Extract the time or phase part
+              let timeLabel = '';
+              let desc = item;
+              const match = item.match(/^([^:]+):(.*)$/);
+              if (match) {
+                timeLabel = match[1].trim();
+                desc = match[2].trim();
+              }
+              
+              main += `
+                <div class="timeline-node">
+                  <div class="timeline-marker"></div>
+                  <div class="timeline-content">
+                    ${timeLabel ? `<div class="timeline-time">${timeLabel}</div>` : ''}
+                    <div class="timeline-desc">${desc}</div>
+                  </div>
+                </div>
+              `;
+            });
+            main += `</div>`;
+          } else {
+            main += `<ul class="smart-list">`;
+            el.items.forEach(item => {
+              main += `<li>${item}</li>`;
+            });
+            main += `</ul>`;
+          }
 
         } else if (el.type === 'key-value') {
           main += `

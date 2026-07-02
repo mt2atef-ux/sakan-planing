@@ -1,25 +1,25 @@
-<svg viewBox="0 0 800 350" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#121824" rx="15" />
-  <text x="400" y="50" font-family="'Tajawal', sans-serif" font-size="24" fill="#ffffff" font-weight="bold" text-anchor="middle">البنية التقنية والمنصات الذكية</text>
+﻿<svg viewBox="0 0 800 350" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f7f5f0" rx="15" stroke="#e6e1d5" stroke-width="1"/>
+  <text x="400" y="50" font-family="\x27Tajawal\x27, sans-serif" font-size="24" fill="#2e2620" font-weight="bold" text-anchor="middle">البنية التقنية والمنصات الذكية</text>
   
   <g transform="translate(80, 120)">
     <rect width="200" height="150" fill="#1f2937" rx="10" stroke="#3b82f6" stroke-width="1.5"/>
-    <text x="100" y="45" font-family="'Tajawal', sans-serif" font-size="16" fill="#3b82f6" font-weight="bold" text-anchor="middle">منصة الأدلة</text>
-    <text x="100" y="90" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">مستودع مركزي ذكي</text>
-    <text x="100" y="120" font-family="'Tajawal', sans-serif" font-size="12" fill="#9ca3af" text-anchor="middle">نظام تصنيف ثلاثي</text>
+    <text x="100" y="45" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#3b82f6" font-weight="bold" text-anchor="middle">منصة الأدلة</text>
+    <text x="100" y="90" font-family="\x27Tajawal\x27, sans-serif" font-size="14" fill="#2e2620" text-anchor="middle">مستودع مركزي ذكي</text>
+    <text x="100" y="120" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" text-anchor="middle">نظام تصنيف ثلاثي</text>
   </g>
 
   <g transform="translate(300, 120)">
-    <rect width="200" height="150" fill="#1f2937" rx="10" stroke="#10b981" stroke-width="1.5"/>
-    <text x="100" y="45" font-family="'Tajawal', sans-serif" font-size="16" fill="#10b981" font-weight="bold" text-anchor="middle">منصة التكامل</text>
-    <text x="100" y="90" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">إدارة الإحالات وتتبع</text>
-    <text x="100" y="120" font-family="'Tajawal', sans-serif" font-size="12" fill="#9ca3af" text-anchor="middle">رحلة المستفيد الموحدة</text>
+    <rect width="200" height="150" fill="#1f2937" rx="10" stroke="#689f38" stroke-width="1.5"/>
+    <text x="100" y="45" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#689f38" font-weight="bold" text-anchor="middle">منصة التكامل</text>
+    <text x="100" y="90" font-family="\x27Tajawal\x27, sans-serif" font-size="14" fill="#2e2620" text-anchor="middle">إدارة الإحالات وتتبع</text>
+    <text x="100" y="120" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" text-anchor="middle">رحلة المستفيد الموحدة</text>
   </g>
 
   <g transform="translate(520, 120)">
-    <rect width="200" height="150" fill="#1f2937" rx="10" stroke="#ff7043" stroke-width="1.5"/>
-    <text x="100" y="45" font-family="'Tajawal', sans-serif" font-size="16" fill="#ff7043" font-weight="bold" text-anchor="middle">لوحة مؤشرات الأداء</text>
-    <text x="100" y="90" font-family="'Tajawal', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">مستودع أفضل الممارسات</text>
-    <text x="100" y="120" font-family="'Tajawal', sans-serif" font-size="12" fill="#9ca3af" text-anchor="middle">رصد الأثر الفعلي</text>
+    <rect width="200" height="150" fill="#1f2937" rx="10" stroke="#d2a679" stroke-width="1.5"/>
+    <text x="100" y="45" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#d2a679" font-weight="bold" text-anchor="middle">لوحة مؤشرات الأداء</text>
+    <text x="100" y="90" font-family="\x27Tajawal\x27, sans-serif" font-size="14" fill="#2e2620" text-anchor="middle">مستودع أفضل الممارسات</text>
+    <text x="100" y="120" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" text-anchor="middle">رصد الأثر الفعلي</text>
   </g>
 </svg>

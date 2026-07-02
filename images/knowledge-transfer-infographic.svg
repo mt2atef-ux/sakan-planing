@@ -1,0 +1,56 @@
+﻿<svg viewBox="0 0 500 350" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <!-- Warm Organic Background matching design system -->
+  <rect width="100%" height="100%" fill="#f7f5f0" rx="20" stroke="#e6e1d5" stroke-width="1"/>
+  
+  <!-- Outer glowing circle to represent knowledge dissemination -->
+  <circle cx="250" cy="160" r="110" fill="none" stroke="#7fa47f" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.6"/>
+  <circle cx="250" cy="160" r="90" fill="none" stroke="#8a6240" stroke-width="1" opacity="0.3"/>
+
+  <!-- Core Hub - The knowledge base -->
+  <circle cx="250" cy="160" r="45" fill="#8a6240" />
+  <!-- Book/Knowledge Icon in the Center -->
+  <path d="M238 152H246V168H238V152ZM254 152H262V168H254V152ZM234 150C234 148.9 234.9 148 236 148H264C265.1 148 266 148.9 266 150V170C266 171.1 265.1 172 264 172H236C234.9 172 234 171.1 234 170V150Z" fill="#ffffff"/>
+  <text x="250" y="222" font-family="\x27Tajawal\x27, sans-serif" font-size="14" fill="#2e2620" font-weight="bold" text-anchor="middle">المستودع المعرفي</text>
+
+  <!-- Node 1 - Evaluation -->
+  <g transform="translate(110, 80)">
+    <circle cx="0" cy="0" r="28" fill="#7fa47f" />
+    <!-- Evaluation checklist icon -->
+    <path d="M-8 -6 H8 M-8 0 H8 M-8 6 H4" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <text x="0" y="45" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" font-weight="bold" text-anchor="middle">التقييم</text>
+  </g>
+
+  <!-- Node 2 - Designing standard guides -->
+  <g transform="translate(390, 80)">
+    <circle cx="0" cy="0" r="28" fill="#7fa47f" />
+    <!-- Pen/Ruler draft icon -->
+    <path d="M-8 8 L8 -8 M0 -8 L8 -8 L8 0" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="0" y="45" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" font-weight="bold" text-anchor="middle">التصميم</text>
+  </g>
+
+  <!-- Node 3 - Transferring Knowledge -->
+  <g transform="translate(110, 240)">
+    <circle cx="0" cy="0" r="28" fill="#7fa47f" />
+    <!-- Transfer arrow icon -->
+    <path d="M-10 0 H10 M4 -6 L10 0 L4 6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="0" y="45" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" font-weight="bold" text-anchor="middle">النقل والاستدامة</text>
+  </g>
+
+  <!-- Node 4 - Daily Practice -->
+  <g transform="translate(390, 240)">
+    <circle cx="0" cy="0" r="28" fill="#7fa47f" />
+    <!-- Gear icon for practice -->
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <path d="M0 -14 V-10 M0 10 V14 M-14 0 H-10 M10 0 H14" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="0" y="45" font-family="\x27Tajawal\x27, sans-serif" font-size="12" fill="#6e655f" font-weight="bold" text-anchor="middle">الممارسة</text>
+  </g>
+
+  <!-- Connecting Lines with clean markers -->
+  <path d="M 135 95 L 210 135" stroke="#8a6240" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.7"/>
+  <path d="M 365 95 L 290 135" stroke="#8a6240" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.7"/>
+  <path d="M 135 225 L 210 185" stroke="#8a6240" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.7"/>
+  <path d="M 365 225 L 290 185" stroke="#8a6240" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.7"/>
+
+  <!-- Core title -->
+  <text x="250" y="45" font-family="\x27Tajawal\x27, sans-serif" font-size="16" fill="#8a6240" font-weight="bold" text-anchor="middle">منهجية نقل المعرفة (ADOPT)</text>
+</svg>
