@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="مشروع روافد — المنظومة الوطنية للتكامل المؤسسي وسلاسل القيمة للجمعيات الأهلية في المملكة العربية السعودية">
   <title>روافد — المنظومة الوطنية للتكامل المؤسسي</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -142,7 +142,7 @@ function showHome() {
 
       <!-- Organic Styled Hero Section matching Reference design -->
       <section class="hero-organic">
-        <div class="hero-organic-bg" style="background-image: linear-gradient(rgba(46, 38, 32, 0.4), rgba(46, 38, 32, 0.7)), url('./images/hero-seedling.jpg');"></div>
+        <div class="hero-organic-bg" style="background-image: linear-gradient(rgba(46, 38, 32, 0.4), rgba(46, 38, 32, 0.7)), url('./assets/images/hero-seedling.jpg');"></div>
         <div class="hero-organic-content">
           <div class="hero-badge-organic">✦ رسالة المنظومة الوطنية للتكامل المؤسسي</div>
           <h1 class="hero-title-organic">نساعد في نمو وتمكين العمل التنموي المستدام بالمملكة</h1>
@@ -179,7 +179,7 @@ function showHome() {
             </div>
           </div>
           <div class="highlight-img-col">
-            <img src="./images/community-work.jpg" alt="العمل التنموي المجتمعي" class="highlight-main-img">
+            <img src="./assets/images/community-work.jpg" alt="العمل التنموي المجتمعي" class="highlight-main-img">
             <div class="floating-highlight-badge">
               <span class="floating-badge-icon">🤝</span>
               <div>
@@ -202,7 +202,7 @@ function showHome() {
             </p>
           </div>
           <div class="highlight-img-col">
-            <img src="./images/knowledge-transfer-infographic.svg" alt="إنفوجرافيك منهجية ADOPT لنقل المعرفة" class="highlight-main-img" style="object-fit: contain; padding: 1rem; background: var(--bg-surface);">
+            <img src="./assets/images/knowledge-transfer-infographic.svg" alt="إنفوجرافيك منهجية ADOPT لنقل المعرفة" class="highlight-main-img" style="object-fit: contain; padding: 1rem; background: var(--bg-surface);">
           </div>
         </div>
       </section>
@@ -265,7 +265,7 @@ async function loadPage(jsonFile) {
   root.innerHTML = `<div style="padding:5rem 0; text-align:center; color:var(--text-muted);">⏳ جارٍ التحميل...</div>`;
 
   try {
-    const res = await fetch(`./pages-json/${jsonFile}`);
+    const res = await fetch(`./assets/pages-json/${jsonFile}`);
     const data = await res.json();
 
     // Build sidebar
@@ -296,9 +296,10 @@ async function loadPage(jsonFile) {
 
     // Infographic
     if (data.infographic) {
+      const infographicPath = data.infographic.replace('./images/', './assets/images/');
       main += `
         <div class="infographic-block">
-          <img src="${data.infographic}" alt="إنفوجرافيك توضيحي">
+          <img src="${infographicPath}" alt="إنفوجرافيك توضيحي">
         </div>
       `;
     }
